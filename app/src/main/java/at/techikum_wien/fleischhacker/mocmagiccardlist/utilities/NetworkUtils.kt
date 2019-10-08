@@ -43,7 +43,7 @@ object NetworkUtils {
     fun buildUrlMagicTheGathering(page: Int): URL? {
 
         // @TODO query pageSize for size == 0, requirement not clear size()
-        val builtUri = Uri.parse(MTG_TEST_URL).buildUpon()
+        val builtUri = Uri.parse(MTG_BASE_URL).buildUpon()
             .appendQueryParameter(CURRENT_PAGE, page.toString())
             //.appendQueryParameter(PARAM_PAGE_SIZE, count)
             .appendQueryParameter(PARAM_SORT, sortBy)
