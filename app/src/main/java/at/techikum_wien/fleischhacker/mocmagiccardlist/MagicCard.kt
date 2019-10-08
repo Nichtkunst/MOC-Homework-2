@@ -23,19 +23,4 @@ class MagicCard(var name: String?, var type: String?, var rarity: String?) : Com
     }
 }
 
-/*
-val json = """
-    {
-	"cards": [
-                {
-                    "name": "Academy Researchers",
-                    "type": "Creature — Human Wizard",
-                    "rarity": "Uncommon",
-                    "colors": ["Blue"]
-                }
-            ]
-    }
-"""
-*/
-
 

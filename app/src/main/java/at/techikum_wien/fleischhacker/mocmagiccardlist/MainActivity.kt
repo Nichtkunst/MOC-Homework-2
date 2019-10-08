@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
 
         val url = NetworkUtils.buildUrlMagicTheGathering(currentPage)
 
-        Toast.makeText(this, "Page: $currentPage", Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "checkURL: $url", Toast.LENGTH_SHORT).show()
+        /* Toast.makeText(this, "Page: $currentPage", Toast.LENGTH_SHORT).show() */
+        /* Toast.makeText(this, "checkURL: $url", Toast.LENGTH_SHORT).show() */
 
         val queryBundle = Bundle()
         queryBundle.putString(PAGE_CONST, url.toString())
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
         // First, hide the currently visible data
         mResultsListView?.setVisibility(View.INVISIBLE)
         // Then, show the error
-        mErrorMessageDisplay?.setVisibility(View.VISIBLE)
+        /* mErrorMessageDisplay?.setVisibility(View.VISIBLE) */
         Toast.makeText(this, "An error occurred. Please try again later.", Toast.LENGTH_LONG).show()
     }
 
@@ -127,7 +127,8 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
                      * When we initially begin loading in the background, we want to display the
                      * loading indicator to the user
                      */
-                    mLoadingIndicator?.setVisibility(View.VISIBLE)
+                    /* mLoadingIndicator?.setVisibility(View.VISIBLE) */
+                    mResultsTextView?.setText("Loading...")
 
                     forceLoad()
                 }
@@ -190,12 +191,29 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
 
             val card = MagicCard(Name, Type, Rarity)
 
+            // @TODO "duplicates"; unable to remove duplicates from ArrayList with kotlin so far...
             card.addColor(colorsArr)
             magicCardList.add(card)
         }
 
         return magicCardList
     }
+
+    /*
+    example JSON for parsing
+    val json = """
+        {
+        "cards": [
+                    {
+                        "name": "Academy Researchers",
+                        "type": "Creature — Human Wizard",
+                        "rarity": "Uncommon",
+                        "colors": ["Blue"]
+                    }
+                ]
+        }
+    """
+    */
 
     fun parseToString(card: MagicCard): String {
         stringyfiedList += card.name.toString() + ": " + card.type.toString() + ", " + card.rarity.toString() + ", " + card.getColors().toString().substring(
@@ -214,7 +232,7 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
 
     override fun onLoadFinished(loader: Loader<String>, data: String?) {
 
-        mLoadingIndicator?.setVisibility(View.INVISIBLE)
+        /* mLoadingIndicator?.setVisibility(View.INVISIBLE) */
 
         if (null == data) {
             showErrorMessage()
