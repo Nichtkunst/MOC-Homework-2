@@ -103,7 +103,9 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
 
     private fun showErrorMessage() {
         // First, hide the currently visible data
-        mResultsListView?.setVisibility(View.INVISIBLE)
+        /* mResultsListView?.setVisibility(View.INVISIBLE) */
+        mResultsTextView?.setText("API Error")
+        btn_load.setEnabled(true)
         // Then, show the error
         /* mErrorMessageDisplay?.setVisibility(View.VISIBLE) */
         Toast.makeText(this, "An error occurred. Please try again later.", Toast.LENGTH_LONG).show()
@@ -202,16 +204,16 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
     /*
     example JSON for parsing
     val json = """
-        {
-        "cards": [
-                    {
-                        "name": "Academy Researchers",
-                        "type": "Creature — Human Wizard",
-                        "rarity": "Uncommon",
-                        "colors": ["Blue"]
-                    }
-                ]
-        }
+    {
+    "cards": [
+                {
+                    "name": "Academy Researchers",
+                    "type": "Creature — Human Wizard",
+                    "rarity": "Uncommon",
+                    "colors": ["Blue"]
+                }
+            ]
+    }
     """
     */
 
@@ -219,7 +221,7 @@ class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<String> 
         stringyfiedList += card.name.toString() + ": " + card.type.toString() + ", " + card.rarity.toString() + ", " + card.getColors().toString().substring(
             2,
             card.getColors().toString().length
-        ).replace("\"", "").replace("]","") + "\n"
+        ).replace("\"", "").replace("]", "") + "\n"
         return stringyfiedList
     }
 
