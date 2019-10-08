@@ -19,6 +19,7 @@ object NetworkUtils {
      */
 
     internal val MTG_BASE_URL = "https://api.magicthegathering.io/v1/cards"
+    internal val MTG_TEST_URL = "https://api.magicthegathering.io/v1/cardsWrongAPI"
 
     internal val PARAM_PAGE_SIZE = "pageSize"
     internal val count = "50"
@@ -41,7 +42,7 @@ object NetworkUtils {
      */
     fun buildUrlMagicTheGathering(page: Int): URL? {
 
-        // @TODO query pageSize for size == 0
+        // @TODO query pageSize for size == 0, requirement not clear skipped it
         val builtUri = Uri.parse(MTG_BASE_URL).buildUpon()
             .appendQueryParameter(CURRENT_PAGE, page.toString())
             //.appendQueryParameter(PARAM_PAGE_SIZE, count)
